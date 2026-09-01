@@ -1,24 +1,36 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Form</title>
+    <title>Drop a Message | Spill</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <form method="POST" action="/new">
-        <h1>New Message</h1>
+    <%- include('partials/navbar') %>
 
-        <div>
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" placeholder="e.g. Abdullah" required>
-        </div>  
-        
-        <div>
-            <label for="message">Message:</label>
-            <textarea name="message" id="message" placeholder="e.g. Good Morning!" required></textarea>
-        </div> 
+        <main class="main">
+            <section class="form-section">
+                <h1>Drop a Message</h1>
+                <p>What's on your mind?</p>
 
-        <button type="submit">Add</button>
-    </form>
+                <form method="POST" action="/new">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="e.g. Abdullah" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Spill it..." required></textarea>
+                    </div>
+
+                    <button type="submit">Post Message</button>
+                </form>
+            </section>
+        </main>
 </body>
+
 </html>

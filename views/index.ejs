@@ -1,40 +1,47 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Message Board</title>
+    <title>Spill</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-    <h1>
-        <%= title %>
-    </h1>
-    <p>Welcome to the message board!</p>
-    <a href="/new">Add a new message</a>
-    <% messages.forEach(message=> { %>
-        <article>
-            <header>
-                <h2>
-                    <%= message.user %>
-                </h2>
-                <time>
-                    <%= message.added.toLocaleString('en-US', { 
-                        year: 'numeric' ,
-                        month: 'long' ,
-                        day: 'numeric' ,
-                        hour: 'numeric' , 
-                        minute: '2-digit' 
-                    }) %>
-                </time>
-            </header>
+    <%- include('partials/navbar') %>
 
-            <p>
-                <%= message.text %>
-            </p>
-            <a href="/messages/<%= message.id %>">Open Details</a>
-        </article>
-        <% }); %>
+        <main class="main">
+            <section class="hero">
+                <h1>What's the tea?</h1>
+                <p>Drop your thoughts. Read what everyone else has to say.</p>
+            </section>
+
+            <section class="messages">
+                <% messages.forEach(message=> { %>
+                    <article class="message-card">
+                        <header class="message-card-header">
+                            <h2>
+                                <%= message.user %>
+                            </h2>
+
+                            <time>
+                                <%= message.added.toLocaleString('en-US', { year: 'numeric' , month: 'long' ,
+                                    day: 'numeric' , hour: 'numeric' , minute: '2-digit' }) %>
+                            </time>
+                        </header>
+
+                        <p>
+                            <%= message.text %>
+                        </p>
+
+                        <a href="/messages/<%= message.id %>">
+                            Open Details
+                        </a>
+                    </article>
+                    <% }); %>
+            </section>
+        </main>
 </body>
 
 </html>

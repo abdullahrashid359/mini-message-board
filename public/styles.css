@@ -1,0 +1,247 @@
+:root {
+    --color-primary: #222;
+    --color-background: #f5f5f5;
+    --color-surface: #fff;
+    --color-text: #222;
+    --color-muted: #666;
+    --color-border: #ddd;
+
+    --radius-small: 6px;
+    --radius-medium: 10px;
+
+    --spacing-small: 0.5rem;
+    --spacing-medium: 1rem;
+    --spacing-large: 2rem;
+    --spacing-xl: 3rem;
+
+    --content-width: 900px;
+    --navbar-width: 1100px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: var(--color-background);
+    color: var(--color-text);
+    line-height: 1.6;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+main {
+    width: min(var(--content-width), 90%);
+    margin: 0 auto;
+}
+
+.navbar {
+    background: var(--color-primary);
+    color: var(--color-surface);
+}
+
+.navbar-content {
+    width: min(var(--navbar-width), 90%);
+    min-height: 65px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-brand {
+    font-size: 1.6rem;
+    font-weight: bold;
+}
+
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar a:hover {
+    opacity: 0.75;
+}
+
+.hero {
+    text-align: center;
+    padding: var(--spacing-xl) 0 var(--spacing-large);
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-small);
+}
+
+.hero p {
+    color: var(--color-muted);
+}
+
+.messages {
+    display: grid;
+    gap: var(--spacing-medium);
+    padding-bottom: var(--spacing-xl);
+}
+
+.message-card {
+    background: var(--color-surface);
+    padding: 1.5rem;
+    border-radius: var(--radius-medium);
+    border: 1px solid var(--color-border);
+}
+
+.message-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: var(--spacing-medium);
+    margin-bottom: var(--spacing-medium);
+}
+
+.message-card-header h2 {
+    font-size: 1.2rem;
+}
+
+.message-card-header time,
+.message-detail-header time {
+    color: var(--color-muted);
+    font-size: 0.85rem;
+}
+
+.message-card p {
+    margin-bottom: var(--spacing-medium);
+}
+
+.message-card>a {
+    font-weight: bold;
+}
+
+.message-card>a:hover {
+    text-decoration: underline;
+}
+
+.form-section {
+    max-width: 600px;
+    margin: 4rem auto;
+}
+
+.form-section h1 {
+    margin-bottom: 0.25rem;
+}
+
+.form-section>p {
+    color: var(--color-muted);
+    margin-bottom: var(--spacing-large);
+}
+
+form {
+    background: var(--color-surface);
+    padding: var(--spacing-large);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-bottom: 1.25rem;
+}
+
+input,
+textarea {
+    font: inherit;
+    padding: 0.75rem;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-small);
+}
+
+textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus {
+    outline: 2px solid var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+button {
+    font: inherit;
+    font-weight: bold;
+    padding: 0.75rem 1.25rem;
+    border: none;
+    border-radius: var(--radius-small);
+    background: var(--color-primary);
+    color: var(--color-surface);
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.message-detail {
+    max-width: 700px;
+    margin: 4rem auto;
+    background: var(--color-surface);
+    padding: var(--spacing-large);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-medium);
+}
+
+.message-detail-header {
+    margin-bottom: 1.5rem;
+}
+
+.message-detail-header h1 {
+    margin-bottom: 0.25rem;
+}
+
+.message-detail p {
+    font-size: 1.1rem;
+    margin-bottom: var(--spacing-large);
+}
+
+.message-detail>a {
+    font-weight: bold;
+}
+
+.message-detail>a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .navbar-content {
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--spacing-small);
+        padding: 0.75rem 0;
+    }
+
+    .navbar-links {
+        gap: var(--spacing-medium);
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .message-card-header {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    form,
+    .message-detail {
+        padding: 1.25rem;
+    }
+}
