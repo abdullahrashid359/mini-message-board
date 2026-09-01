@@ -6,7 +6,7 @@ The application uses Express for routing and server-side logic and EJS for serve
 
 ## Live Demo
 
-**Live:** will add after deployment :-)
+**Live:** https://spill-7wf3.onrender.com
 
 ## Screenshots
 
