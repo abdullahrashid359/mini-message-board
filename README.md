@@ -19,14 +19,15 @@ The application uses Express for routing and server-side logic and EJS for serve
 * Responsive message board interface
 * Displays all available messages
 * Allows users to create and submit new messages
-* Automatically assigns an ID to each new message
+* Persistent message storage using PostgreSQL
+* Database-backed message retrieval and creation
 * Displays the author, message content, and timestamp
 * Opens individual messages through dynamic routes
 * Handles invalid message IDs with a custom 404 error
 * Redirects users to the message board after submitting a message
 * Server-side rendering with EJS
 * Reusable EJS navbar partial
-* Form validation using HTML attributes
+* Server-side form validation using express-validator
 * Responsive design for desktop, tablet, and mobile
 * Interactive hover and focus states
 * Semantic HTML structure
@@ -37,6 +38,9 @@ The application uses Express for routing and server-side logic and EJS for serve
 * Node.js
 * Express
 * EJS
+* PostgreSQL
+* pg
+* express-validator
 * JavaScript
 * HTML5
 * CSS3
@@ -65,14 +69,21 @@ This project helped me practice and reinforce:
 * Creating Express error-handling middleware
 * Using HTTP status codes
 * Working with dynamic routes such as `/messages/:id`
-* Finding objects in arrays using `Array.find()`
-* Working with JavaScript `Date` objects
+* Connecting a Node.js application to PostgreSQL using pg
+* Using PostgreSQL connection pools
+* Executing parameterized SQL queries
+* Separating database queries from controllers
+* Creating and populating PostgreSQL tables
+* Using environment variables for database configuration
+* Persisting application data in a PostgreSQL database
+* Implementing server-side validation with express-validator
 * Formatting dates and times with `toLocaleString()`
 * Structuring and serving static assets using a public directory
 * Creating responsive layouts with CSS
 * Using Flexbox and CSS Grid
 * Using CSS custom properties
 * Building responsive forms and navigation
+
 
 ## Project Structure
 

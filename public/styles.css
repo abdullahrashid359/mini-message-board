@@ -5,6 +5,7 @@
     --color-text: #222;
     --color-muted: #666;
     --color-border: #ddd;
+    --error-color: #dc2626;
 
     --radius-small: 6px;
     --radius-medium: 10px;
@@ -217,6 +218,15 @@ button:hover {
 
 .message-detail>a:hover {
     text-decoration: underline;
+}
+
+.form-errors {
+    margin-bottom: 1rem;
+}
+
+.form-errors p {
+    color: var(--error-color);
+    margin: 0.25rem 0;
 }
 
 @media (max-width: 600px) {

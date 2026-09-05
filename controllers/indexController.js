@@ -1,38 +1,28 @@
+const { body, validationResult, matchedData } = require('express-validator');
 const CustomNotFoundError = require('../errors/CustomNotFoundError');
+const db = require('../db/queries');
 
-const messages = [
-    {
-        id: 1,
-        text: "Mai bhaaga bhaaga",
-        user: "Imran Khan",
-        added: new Date()
-    },
-    {
-        id: 2,
-        text: "I am a little naughty boy",
-        user: "Bilawal Bhutto",
-        added: new Date()
-    },
-    {
-        id: 3,
-        text: "I thought we were having a nice date",
-        user: "Freaky Nikki",
-        added: new Date()
-    }
+const validateMessage = [
+    body("name").trim()
+        .notEmpty().withMessage("Name cannot be empty.")
+        .isLength({ min: 1, max: 50 }).withMessage("Name must be between 1 and 50 characters."),
+    body("message").trim()
+        .notEmpty().withMessage("Message cannot be empty.")
+        .isLength({ min: 1, max: 300 }).withMessage("Message must be between 1 and 300 characters."),
 ];
 
-function renderIndexPage(req, res) {
-    res.render('index', { title: 'Mini Message Board', messages: messages });
+async function renderIndexPage(req, res) {
+    res.render('index', { title: 'Mini Message Board', messages: await db.getAllMessages() });
 }
 
 function renderForm(req, res) {
     res.render('form');
 }
 
-function getMessage(req, res) {
+async function getMessage(req, res) {
     const { id } = req.params;
 
-    const message = messages.find(message => message.id === Number(id));
+    const message = await db.getMessage(Number(id));
 
     if (!message)
         throw new CustomNotFoundError("Message not found");
@@ -40,15 +30,21 @@ function getMessage(req, res) {
     res.render('message', { message: message });
 }
 
-function handleFormSubmission(req, res) {
-    messages.push({
-        id: messages.length + 1,
-        text: req.body.message,
-        user: req.body.name,
-        added: new Date()
-    });
+const handleFormSubmission = [
+    validateMessage,
+    async (req, res) => {
+        const { errors } = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).render('form', {
+                errors: errors.array(),
+                name: req.body.name,
+                message: req.body.message,
+            });
+        }
 
-    res.redirect('/');
-}
+        const { message, name } = matchedData(req);
+        await db.insertMessage(message, name, new Date());
+        res.redirect('/');
+    }]
 
 module.exports = { renderIndexPage, renderForm, getMessage, handleFormSubmission };
