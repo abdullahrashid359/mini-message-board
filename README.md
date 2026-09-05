@@ -97,6 +97,10 @@ mini-message-board/
 │   └── styles.css
 ├── routes/
 │   └── indexRouter.js
+├──db/
+│   ├── pool.js
+│   ├── queries.js
+│   └── populatedb.js
 ├── views/
 │   ├── partials/
 │   │   └── navbar.ejs
@@ -132,6 +136,18 @@ Install dependencies:
 npm install
 ```
 
+Create a `.env` file in the project root and add your PostgreSQL connection string:
+
+```env
+DATABASE_URL=your_postgresql_connection_string
+```
+
+Populate the database:
+
+```bash
+node db/populatedb.js
+```
+
 Start the server:
 
 ```bash
@@ -143,6 +159,7 @@ Open the application in your browser:
 ```text
 http://localhost:3000
 ```
+
 
 ## Routes
 

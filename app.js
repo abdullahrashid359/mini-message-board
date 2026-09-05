@@ -1,6 +1,9 @@
 const net = require('node:net');
 net.setDefaultAutoSelectFamily(false);
-process.loadEnvFile('.env');
+
+if (process.env.NODE_ENV !== 'production') {
+    process.loadEnvFile('.env');
+}
 
 const express = require('express');
 const path = require('node:path');
